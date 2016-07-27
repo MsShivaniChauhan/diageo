@@ -1,0 +1,68 @@
+<!-- Login/Register Modal -->
+<div id="login-register" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="login-section" ng-controller="loginController">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"></button>
+                    <p>Need an account?</p>
+                    <a class="action-register">Register</a>
+                </div>
+                <div class="modal-body">
+                    <h3><img src="images/logo-icon.svg"/>Login</h3>
+                    <form class="form-horizontal" novalidate>
+                        <label>Email</label>
+                        <div class="form-group">
+                            <input type="email" class="form-control" name="email" id='login-email' value="">
+                            <span  class="help-block"></span>
+                        </div>
+                        <label>Password</label>
+                        <div class="form-group">
+                            <input type="password" class="form-control" name="password" id='login-password'>
+                            <span  class="help-block"></span>
+                        </div>
+                        <a href="" class="forgot-pass">Forgotten password?</a>
+                        <input type="submit" value="Login" id="login">
+                    </form>
+                </div>
+            </div>
+            <div class="register-section" ng-controller="registerController">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"></button>
+                    <p>Already have an account?</p>
+                    <a class="action-login">Login</a>
+                </div>
+                <div class="modal-body">
+                    <h3><img src="images/logo-icon.svg"/>Register</h3>
+                    <form class="form-horizontal" novalidate name="register" ng-submit="submit()">
+                        <label>Email</label>
+                        <div class="form-group">
+                            <input type="email" class="form-control" ng-model="reg_email" ng-pattern='/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/' name="reg_email" autocomplete="off" required>
+                            <div class="has-error" ng-show="register.reg_email.$dirty">
+                                <span ng-show="register.reg_email.$error.required">Email Address is required.</span>
+                                <span ng-show="register.reg_email.$error.pattern">Invalid Email Address.</span>
+                            </div>
+                        </div>
+                        <label>Password</label>
+                        <div class="form-group">
+                            <input type="password" class="form-control" id="reg_password" name="reg_password" autocomplete="off" ng-model="reg_password" ng-minlength="5" ng-maxlength="15" required="">
+                            <div class="has-error" ng-show="register.reg_password.$dirty">
+                                <span ng-show="register.reg_password.$error.required">Password is required.</span>
+                                <span ng-show="register.reg_password.$error.minlength || register.reg_password.$error.maxlength">Password should of 5 to 15 character.</span>
+                            </div>
+                        </div>
+                        <label>Repeat Password</label>
+                        <div class="form-group">
+                            <input type="password" class="form-control" id="reg_password_confirmation" name="reg_password_confirmation" ng-model="reg_password_confirmation" autocomplete="off" required="" pw-check="reg_password">
+                            <div class="has-error" ng-show="register.reg_password_confirmation.$dirty && register.reg_password_confirmation.$invalid">
+                                <span ng-show="register.reg_password_confirmation.$error.required">Confirm Password is required.</span>
+                                <span ng-show="!register.reg_password_confirmation.$error.required && register.reg_password_confirmation.$error.pwmatch">Confirm Password and Password do not match.</span>
+                            </div>
+                        </div>
+                        <input type="submit" value="Register" ng-disabled="register.$invalid">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,26 @@
+<section class="front-page-landing">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 zip-form-wrap">
+                
+                <button id="login" data-target="#login-register" data-toggle="modal">Login</button>
+                
+                <!--<a id="home" href="">Home</a>-->
+                
+                <a href=""><img src="images/logo-new-vertical.svg"></a>
+                <form name="postcodeForm" method="post" ng-controller="postcodeController">
+                    <label>Postcode</label>
+                    <input type="text" ng-model="postcode" name="postcode" id="postcode" placeholder="E.G. N4 2PG" required="" ng-keyup="suggestion()">
+                    <input type="hidden" name="_token" value="" />
+                    <input type="submit" value="Start" id="start_button" ng-disabled="postcodeForm.postcode.$error.required"/>
+                </form>
+                <blockquote class="news-advert">
+                    <h3>"First webapp delivering alcohol around uk"</h3>
+                    <p>- Newspaper name -</p>
+                </blockquote>
+            </div>
+        </div>
+    </div>
+</section>
+<footer class="siteFooter" ng-include="'partials/footer.html'"></footer>
+<div ng-include="'partials/login-modal.html'"></div>
